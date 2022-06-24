@@ -1,7 +1,12 @@
 %define debug_package %{nil}
+# Tests don't work inside abf because they need
+# connectivity to github.com
+# Probably best to do a --with-tests build when
+# updating though...
+%bcond_with tests
 
 Name:		github-cli
-Version:	2.11.3
+Version:	2.13.0
 Release:	1
 Source0:	https://github.com/cli/cli/archive/refs/tags/v%{version}.tar.gz
 # Yes, go sucks...
@@ -11,7 +16,7 @@ Source0:	https://github.com/cli/cli/archive/refs/tags/v%{version}.tar.gz
 # export GOPATH=/tmp/.godeps
 # go mod download
 # cd /tmp
-# tar cJf godeps-for-gitea-%{version}.tar.xz .godeps
+# tar cJf godeps-for-github-cli-%{version}.tar.xz .godeps
 Source1:	godeps-for-github-cli-%{version}.tar.xz
 Url:		https://github.com/cli/cli
 BuildRequires:	golang make
@@ -35,8 +40,10 @@ export GOPATH="`pwd`/.godeps"
 export GOPROXY="file://`pwd`/.godeps"
 %make_install prefix=%{_prefix}
 
+%if %{with tests}
 %check
 make test
+%endif
 
 %files
 %{_bindir}/gh
