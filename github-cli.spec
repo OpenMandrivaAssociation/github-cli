@@ -6,7 +6,7 @@
 %bcond_with tests
 
 Name:		github-cli
-Version:	2.20.0
+Version:	2.23.0
 Release:	1
 Source0:	https://github.com/cli/cli/archive/refs/tags/v%{version}.tar.gz
 # Yes, go sucks...
