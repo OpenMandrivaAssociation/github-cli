@@ -7,7 +7,7 @@
 
 Name:		github-cli
 Version:	2.23.0
-Release:	1
+Release:	2
 Source0:	https://github.com/cli/cli/archive/refs/tags/v%{version}.tar.gz
 # Yes, go sucks...
 # No concept of shared libraries, but downloading 1.3 GB worth of dependencies
