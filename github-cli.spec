@@ -6,8 +6,8 @@
 %bcond_with tests
 
 Name:		github-cli
-Version:	2.23.0
-Release:	2
+Version:	2.29.0
+Release:	1
 Source0:	https://github.com/cli/cli/archive/refs/tags/v%{version}.tar.gz
 # Yes, go sucks...
 # No concept of shared libraries, but downloading 1.3 GB worth of dependencies
@@ -48,3 +48,6 @@ make test
 %files
 %{_bindir}/gh
 %{_mandir}/man1/*.1*
+%{_datadir}/bash-completion/completions/gh
+%{_datadir}/fish/vendor_completions.d/gh.fish
+%{_datadir}/zsh/site-functions/_gh
