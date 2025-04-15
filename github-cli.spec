@@ -6,17 +6,13 @@
 %bcond_with tests
 
 Name:		github-cli
-Version:	2.54.0
+Version:	2.70.0
 Release:	1
 Source0:	https://github.com/cli/cli/archive/refs/tags/v%{version}.tar.gz
-# Yes, go sucks...
-# No concept of shared libraries, but downloading 1.3 GB worth of dependencies
-# is considered perfectly "sane"...
+# Sadly go has no concept of shared libraries
 # Dependency tarball generated using
-# export GOPATH=/tmp/.godeps
-# go mod download
-# cd /tmp
-# tar cJf godeps-for-github-cli-%{version}.tar.xz .godeps
+# go mod vendor
+# tar cJf ../../../godeps-for-github-cli-%{version}.tar.xz vendor
 Source1:	godeps-for-github-cli-%{version}.tar.xz
 Url:		https://github.com/cli/cli
 BuildRequires:	golang make
@@ -31,13 +27,9 @@ CLI tools for working with github repositories
 %autosetup -p1 -n cli-%{version} -a 1
 
 %build
-export GOPATH="`pwd`/.godeps"
-export GOPROXY="file://`pwd`/.godeps"
 %make_build prefix=%{_prefix}
 
 %install
-export GOPATH="`pwd`/.godeps"
-export GOPROXY="file://`pwd`/.godeps"
 %make_install prefix=%{_prefix}
 
 %if %{with tests}
