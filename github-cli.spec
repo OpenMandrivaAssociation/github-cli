@@ -6,7 +6,7 @@
 %bcond_with tests
 
 Name:		github-cli
-Version:	2.88.1
+Version:	2.96.0
 Release:	1
 Source0:	https://github.com/cli/cli/archive/refs/tags/v%{version}.tar.gz
 # Sadly go has no concept of shared libraries
@@ -21,7 +21,7 @@ Group:		Development/Tools
 License:	MIT
 
 %patchlist
-cli-2.88.1-fix-bogus-checksums.patch
+cli-2.96.0-fix-bogus-checksums.patch
 
 %description
 CLI tools for working with github repositories
