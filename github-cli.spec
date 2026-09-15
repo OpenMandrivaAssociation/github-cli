@@ -27,7 +27,7 @@ cli-2.101.0-fix-bogus-checksums.patch
 CLI tools for working with github repositories
 
 %prep
-%autosetup -p1 -n cli-2.97.0 -a 1
+%autosetup -p1 -n cli-%{version} -a 1
 
 %build
 %make_build prefix=%{_prefix}
