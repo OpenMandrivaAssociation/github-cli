@@ -6,7 +6,7 @@
 %bcond_with tests
 
 Name:		github-cli
-Version:	2.101.0
+Version:	2.103.0
 Release:	1
 Source0:	https://github.com/cli/cli/archive/refs/tags/v%{version}.tar.gz
 # Sadly go has no concept of shared libraries
@@ -19,9 +19,6 @@ BuildRequires:	golang make
 Summary:	CLI tools for working with github repositories
 Group:		Development/Tools
 License:	MIT
-
-%patchlist
-cli-2.101.0-fix-bogus-checksums.patch
 
 %description
 CLI tools for working with github repositories
