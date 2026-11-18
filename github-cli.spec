@@ -6,7 +6,7 @@
 %bcond_with tests
 
 Name:		github-cli
-Version:	2.104.0
+Version:	2.105.0
 Release:	1
 Source0:	https://github.com/cli/cli/archive/refs/tags/v%{version}.tar.gz
 # Sadly go has no concept of shared libraries
@@ -27,7 +27,9 @@ CLI tools for working with github repositories
 %autosetup -p1 -n cli-%{version} -a 1
 
 %build
-%make_build prefix=%{_prefix}
+# The upstream build reads GH_VERSION, then git describe. The unpacked
+# tarball has no git history, so set the version here.
+GH_VERSION=%{version} %make_build prefix=%{_prefix}
 
 %install
 %make_install prefix=%{_prefix}
